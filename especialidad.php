@@ -155,23 +155,12 @@
 
     <!--CONTAINER MAIN CAROUSEL-->
     <main class="container-fluid p-0" style="background-color: #f3a3b7;">
-        <?php
-            if(isset($_GET["id"]) && isset($_GET["especialidad"])){
-                echo "<h2>". $_GET["especialidad"] ."</h2>";
-            }
-        ?>
+        <h2></h2>
     </main>
     <!--END CONTAINER MAIN CAROUSEL-->
 
     <section class="container-fluid">
-        <?php
-            if(isset($_GET["id"]) && isset($_GET["especialidad"])){
-                echo "<p>id: " . $_GET["id"] . "</p>";
-                echo "<p>Especialidad: " . $_GET["especialidad"] . "</p>";
-            } else {
-                echo "<p>No se han recibido resultados</p>";
-            }
-        ?>
+
     </section>
 
     <script src="assets/js/jquery.min.js"></script>

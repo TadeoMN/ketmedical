@@ -12,7 +12,12 @@
             if ($stmt->rowCount() > 0) {
                 $result = $stmt->fetch();
 
-                header("Location: ../speciality.php?id=" . $result["id"] . "&especialidad=" . $result["especialidad"]. "&idDoctor=" . $result["id_doctor"]);
+                $id = $result["id"];
+                $especialidad = $result["especialidad"];
+                $idDoctor = $result["id_doctor"];
+
+                include '../especialidad.php';
+//                header("Location: ../especialidad.php?id=" . $result["id"] . "&especialidad=" . $result["especialidad"]. "&idDoctor=" . $result["id_doctor"]);
             } else {
                 echo "No se encontraron resultados para el ID especificado";
             }
