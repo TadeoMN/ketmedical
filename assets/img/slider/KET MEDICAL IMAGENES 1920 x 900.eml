@@ -1,0 +1,352 @@
+Received: from SA1PR02MB8463.namprd02.prod.outlook.com (2603:10b6:806:1f7::24)
+ by MWHPR02MB2784.namprd02.prod.outlook.com with HTTPS; Fri, 8 Jul 2022
+ 05:34:30 +0000
+ARC-Seal: i=2; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=pass;
+ b=iFWOkFbuB4UPbXS8gYB6uFXlEuaBOnuDHKuM1HOMTFynnGrTk7nW5NHoMx/MuJClXv8PQOvjF219dlx+QTvnM2MaJ6rSVHRCRxRc3NTeKp74W+eNxzW0bH6MrCdZ70L02l4mxlF81okbu1SZgxlbt5A0iey76s2lr/G3se+4Z+RwvoE0WEZfd8q7AiAWHQZftnAlaf35t/zqC3WLRUP0zF9QPEr2bGYqPz3aNyVY44q7a4C0aNQfyD6HheapIAYtOp9uuYTPygjEGb8gx+N26+mmajrQArHu28a2fL9DqwdTLjd6BepLwo24GXsCHOb1wxcFbeGWsHwn+5j/82R1jg==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=64qAj5mtwfZ4sqy6eFNokM1zeXw5/Y9BtQ5I1dOHjaI=;
+ b=FyRWfeg2bvs/nHKS4V1nt1NK0kwMI7VAMHLvRivkyIfavPD+h5xJ6kNJwyDZNWwDy0kQwaCJmBEGHIkhJFV9rYhsDifAOduw06TZCxiNtlQJlB7bKeIuOupeclIC5eg03LEDgVD/WKAaYewxd/nuVY5BfenxDOCMECZweSN82Zn1GWxZ2bbJsddkEP0ec3LPJu7eW7dokaJjUxdRulzwOjQZAdBNHzQZLw1TOIK4YnZuJjTF/bqtYv9RD02Y3byDIEWUTAHND0B2aS8D7mMjuFiX4itVItvJtkQX6I40waAOt7pl++Zkumvv6uHb8zbiahQv1qSwpvMRZn16Qmfl8w==
+ARC-Authentication-Results: i=2; mx.microsoft.com 1; spf=pass (sender ip is
+ 40.92.41.13) smtp.rcpttodomain=live.com smtp.mailfrom=hotmail.com; dmarc=pass
+ (p=none sp=none pct=100) action=none header.from=hotmail.com; dkim=pass
+ (signature was verified) header.d=hotmail.com; arc=pass (0 oda=0 ltdi=1)
+Received: from DB6P191CA0009.EURP191.PROD.OUTLOOK.COM (2603:10a6:6:28::19) by
+ SA1PR02MB8463.namprd02.prod.outlook.com (2603:10b6:806:1f7::24) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5417.16; Fri, 8 Jul
+ 2022 05:34:25 +0000
+Received: from DB3EUR04FT028.eop-eur04.prod.protection.outlook.com
+ (2603:10a6:6:28:cafe::8b) by DB6P191CA0009.outlook.office365.com
+ (2603:10a6:6:28::19) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5417.15 via Frontend
+ Transport; Fri, 8 Jul 2022 05:34:24 +0000
+Authentication-Results: spf=pass (sender IP is 40.92.41.13)
+ smtp.mailfrom=hotmail.com; dkim=pass (signature was verified)
+ header.d=hotmail.com;dmarc=pass action=none
+ header.from=hotmail.com;compauth=pass reason=100
+Received-SPF: Pass (protection.outlook.com: domain of hotmail.com designates
+ 40.92.41.13 as permitted sender) receiver=protection.outlook.com;
+ client-ip=40.92.41.13; helo=NAM10-DM6-obe.outbound.protection.outlook.com;
+ pr=C
+Received: from NAM10-DM6-obe.outbound.protection.outlook.com (40.92.41.13) by
+ DB3EUR04FT028.mail.protection.outlook.com (10.152.24.200) with Microsoft SMTP
+ Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.5417.15 via Frontend Transport; Fri, 8 Jul 2022 05:34:24 +0000
+X-IncomingTopHeaderMarker:
+ OriginalChecksum:102E2F1851E2D39907BF5CBE4B227850033035D1CC25E152654B3826C327962A;UpperCasedChecksum:13EB31B914AA52DADCE79D044F5E7816E954E1EBB246A184F055C66560B60C49;SizeAsReceived:7450;Count:39
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=JlJLdEHddXLj2kX2acCbFbOYISFjMxjrouqiiAve6V22rhXCVY4gMcc7xC47/cbcsMLW1w6xmugyoEpSb+jQrmo4XyzcC42RKsdXTRGKyWdfByRb1XbzCvY2b0xDnh9+JX5puTAJ8Ik0x3gK/8t546p9nX9gyiALcxS7wTx2J5VnVeGfDHlXCSyKgS1/7MizSUQ+Dnd3rn8RwLJAViIWe//zgJM4yc/mIKnmD154EXReWHsDYzwoHoC+Ld31I2VafEhAibRjlIWiPqmENsQ/C+d4+XbytheG7ijS4aM/rTVT/p6ljdQgeIVixWjEYLtvpNvulCL24AwVgd4L9+lvpw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=64qAj5mtwfZ4sqy6eFNokM1zeXw5/Y9BtQ5I1dOHjaI=;
+ b=LIJ7Rauz7URGGT0JigrXvfolZz9rcx3QkBsxA8VEwmWH0HuopEXNyY3eO/1nHF8rIzN0JuTSTqfdYDalnzUotbMQBvahyFHMVcwfKSNdQog1bAmYKtChg6OphFOziNdjiOUuA2qYKo272sON0q+/CFGvQib2o3PNPwlIJqjXHKDNJ5gwPuchCy7H7CvqV924Q2VoPidrDiZgUlTMZXKd33eDGLM8qKOgDCXO8SgBpXKW7V8iaTSeOjDotWMWhgPjMNye2H5HF09aKpHG6FAyYcuY+vYx1jMKvsIDA3u5+KP23EblSI2JBsxQ6ngI4PnFTjk6NsQ6qXGeb/DjnhjRAw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=none; dmarc=none;
+ dkim=none; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=hotmail.com;
+ s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=64qAj5mtwfZ4sqy6eFNokM1zeXw5/Y9BtQ5I1dOHjaI=;
+ b=c2x5szuwC4nbtB//745kNMhUhdU+a0y30rD4F/e3uHkrYVXr7ZqH156oEa4iimjX2DhKiBszBNP6j8mBD7JtZxPFCCuD+3movgCfJ0lXvptO+vsO/IK3mfySB9YzxG4WpsFbjSdmSsJ/a7/YFlANZQvW5ib2Z01Xb6LtbI/F4s4oUbu0saerowkcVu8s0i3ldMYYlGIqoYgIwGLMb9UORXl5bMvwuM3QNF1pIBEHvtEL0J9r/STCXTMzTwG8HhVFsBrjbsDGt94ukTWSXUJVnSyb/jaKMWX+MXJMxM+sGjw02fzTyGjVS1poJ830QwMigf4wEOjQuBTvAY/qZE2dgg==
+Received: from BL0PR03MB4036.namprd03.prod.outlook.com (10.167.182.223) by
+ CO1PR03MB5729.namprd03.prod.outlook.com (20.182.137.143) with Microsoft SMTP
+ Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.5395.14; Fri, 8 Jul 2022 05:34:23 +0000
+Received: from BL0PR03MB4036.namprd03.prod.outlook.com
+ ([fe80::f0bd:7322:1324:e9ba]) by BL0PR03MB4036.namprd03.prod.outlook.com
+ ([fe80::f0bd:7322:1324:e9ba%7]) with mapi id 15.20.5417.016; Fri, 8 Jul 2022
+ 05:34:23 +0000
+From: Maria Paula Salcedo Montoya <lic.mariasalcedo@hotmail.com>
+To: "Rodolfo.ruiz@live.com" <Rodolfo.ruiz@live.com>
+Subject: KET MEDICAL IMAGENES 1920 x 900
+Thread-Topic: KET MEDICAL IMAGENES 1920 x 900
+Thread-Index: AQHYkorXFCiaXvlxJEWOXjLctHdp5Q==
+Date: Fri, 8 Jul 2022 05:34:22 +0000
+Message-ID:
+ <BL0PR03MB4036F4446301620393CAE87682829@BL0PR03MB4036.namprd03.prod.outlook.com>
+Accept-Language: en-US, es-ES
+Content-Language: en-US
+X-MS-Has-Attach:
+X-MS-TNEF-Correlator:
+msip_labels:
+x-tmn: [5NdU6qOqJTPVNYHKlfx/hmr/cQhzvjHEn7Aa2CIVKf/MJD6SNr6SgNPtagNjQG5a]
+X-MS-Office365-Filtering-Correlation-Id: df736e10-e224-4cb1-8025-08da60a384ac
+x-ms-exchange-slblob-mailprops:
+ g0UYh8+NHeUPoJfjP+/QI6QFb8HOBPx81+SxuyZFpz9ouiSzqbn6bnilXfV2v9wY4SziN+jCVZ/GOUwhGDt1ruQe8t3nHjocAvDt0ktAwa9+FLAGDWKe7pWBcvQYD8A8Oqw+1gd21Vb99V3Hk/GuFZH4mY5eZwLmnp9IeC0qLywgmDq/pqEMHQS2Rfv96GlQAiP80wDk60KWRprr/+y5Zu4VkB8eVP5qqIw2+VFWp7bpPg5pfqQHxbqSU9IwPxfbsTyzqXKkbpXiLCE4QbIhJZYihf/G6EDWKenvFl78S3/NMdJhbjOwVD2K9KZM6nie3YTdpH9b+NMNBBwKsIvO7SJtDKT/Kq77V+8Fl5lOP+U1cLKmA5bpCU2a1GqiSg4ZTUveOPEtC28+1MKlDrXRqWN1R99Tnzc/dSxQL4CMVQphKx5laCeI4LuJQK8C9mjELCbZpqWrGy8QvYzG8FRKc6d3J5gKmxTqbt+IFn7xIhapnCYcE5PBg8w59N0qgFBssv3FybuvDAKKRSfuQ0EeT0KrRKe5NuOb1mP+PdNJPbVf9Tvl2H5I8PyCMpI0hKne4RJmz2X3ySalM1zX/9m5WXPo6TDzp+CZMH07taPyXAe3jHPUl8PiKls5LyOjbSvrnbCuXuYs8q5S8T1mfYKzKEZbmt3UGq7mm4JfxmAKcm5IIPWRDZP2HdOrrBAUjHt6Zwim4KBTKPgoofkdkthATkj6B8n6uqAxsVrOt2H1ylgWuREQe41uTF9ShqA3r5vZAo4zT9e0lHk=
+x-ms-traffictypediagnostic:
+ CO1PR03MB5729:EE_|DB3EUR04FT028:EE_|SA1PR02MB8463:EE_
+X-Microsoft-Antispam-Untrusted: BCL:0;
+X-Microsoft-Antispam-Message-Info-Original:
+ a01AUPs+b2q3koG8eWpdwD2s3jMyG1IPfad0IpqA8lTYPvyFd3br+JZErO1X/dOQYOnMg185KM0dABGxsnNUJRLN0wiI367SUwjbe+Kt/+3oFTKAsfBW2SgXuQHWZ5qxp/Fpm9HPIt1b5DEOLUNcSVU1meuOoiegKtKMyOE28CLnqDfWUn9aGj3mBpRo+z5EHDlVKaiLXj9OU6kWWtthjuBaRuHYK54JS489yY4B6AX/PNvL9dF8I+F7YgKNuj7uhFHQyKJIjgtuH5cpY10ZwvKLL9Z3W6ZcQxb2fnxMNniSgAI3ssm01QDTaP3sTqdBmqhpDl5T1xySqKFHw1RvU/JDmfxL2TpOmsFQhDhueMMCMNOFOx+/+uuMvJKdzCi6r1bn7Zy2zNjoiDSJO762PgUaiwwf+2wTPHIYr6wZfeUMyEQCLbzLb03HyczCaIs0q6BdYm6eociDxLw3EdwmAnf43jIuz/PJtWcrhiQ5bc4s/kCb+YgpW0PjTB320mxq94HlIcMHO6ZNAJXAZFIg4cv3sCJC+I83o/iEfMbkq4RR93xiVhkh9VsG7G3bqnkJUArwmvveEq4cWqYjTsGkXZPAYdXGlDo8MD/UbayYcTypHJPIp2HbRkGVAWYRkQabf82EyD3FBU6abjZGTKEp6HR5oNdhoFBfh5RZJXhMEeh853FRNsFXW7QfKM43A+DBStCjEUXH8O2P7jLujSc814arsaqHCUk+KoPFZS/fVlc=
+X-MS-Exchange-AntiSpam-MessageData-Original-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-Original-0:
+ =?iso-8859-1?Q?pTz/VJ0GgTM+R9G8w4rfTKbRxLMAZLXiG1EDS2zQEMjAjaMpkjW4G2BWYt?=
+ =?iso-8859-1?Q?WELgc3Hrb/fp0x4sV00WB0dAAhXxxU/SuvdKmV0yK1KGB5BCfIwr7wtaV5?=
+ =?iso-8859-1?Q?4J57Xp/fZ3j1wLFWyxCiNxuJnNtXCxHlFVspVpZp3F05hj0SuQUpZGz5D8?=
+ =?iso-8859-1?Q?abQi7/UnR+dX+ilCcOxGmxlG33H8qU4zpAMrrmjHwO9mvyvLUbyNugI2B1?=
+ =?iso-8859-1?Q?W6k8WxyGyH2Bu7dlOs2CCm1wTHEU5tVoqs0Sgz0BgfzZaD15XrYatPL5NT?=
+ =?iso-8859-1?Q?Yj9g2ta9CZeISLj8HCl0UsDt0znFAaJAq2s4JiKSCtRCHSUbdZAMAvds4c?=
+ =?iso-8859-1?Q?g2hBJTWNZz2/U5ufwEU8nmmnqH6Jlcmr7ixThNBFthUf5tc6uRwU8Y7D7s?=
+ =?iso-8859-1?Q?0H6WBwWJE6B/GeT/2KRb158jEZKyUKpPXs3r7zrKZOv9No54UgKWRJYPBg?=
+ =?iso-8859-1?Q?8hSVUy9DnhEPM229Rrk4OirAIryssL/I3g294gR1PAq96uxrcPBGzo6ggU?=
+ =?iso-8859-1?Q?fWwBtFgLVeacGoiYVe93NyuFLzo7bJhNs2z3PFh7s1+dEwUzMcaBzVeWfH?=
+ =?iso-8859-1?Q?+8FZctceM105b+MRZs8R/Lm7Q8Nnk/Pty8Nq9gqmBSm8JzlyJ1AlhUw3rO?=
+ =?iso-8859-1?Q?nBmhXYASIPOF5GHXRetzE1gIJgA4Oujtuo0SvNd7GNbBiFixdH58hRf5+G?=
+ =?iso-8859-1?Q?hSDoCJ1Q1HWE+L+768ynXVOtxxdUwCuGzh6ITVmfvqP0k7ugK5Oda3y8gn?=
+ =?iso-8859-1?Q?2pcF2UaDPP8F/Ry+67BllKbY/6N/UD+MRTNRewmNuV1k1lMZs8WEDkDWXQ?=
+ =?iso-8859-1?Q?cW1MkdX8+juCQLw6MgMtQbX/AT+Dtn7yU8TDC26X0MPtUn11Es0ankior9?=
+ =?iso-8859-1?Q?IPY01t0g96BOtSrOnMYM0xP2aAEglqSIn1bcBS5MgDbDdDUmJS0vTTmGWL?=
+ =?iso-8859-1?Q?Kmuy81GGL9wk5CHv2fHlT0cMfv2ax78bNgFdIBzFI0IwuKbMGgA5MOnq0b?=
+ =?iso-8859-1?Q?SXF4lk0eYH1rxrlTVG2V1H8Kb1rUndTHndlgf7zFuRM5h7zSlIqCyuNUZ0?=
+ =?iso-8859-1?Q?mbDrx2nhC173UUJ8DDqM4IDQ8mz5cl5wGZoL8k7J7Ch8pr4vQKypDn1cbk?=
+ =?iso-8859-1?Q?0ULDQQ3HXl2cT1v8BdKGocRASFA1lc6807Bjqrm8DOI/gsSIg+mRaWwwNo?=
+ =?iso-8859-1?Q?q2Qi8qXwbBcCvhh8CmPVs53VhpzHgFQ3ukOQLmDkaVJL9XfR0Cx19PaLoF?=
+ =?iso-8859-1?Q?d8hFerlEY5dg3CBxX6wIJhcW6NmRJEGLohWbd2HBXirVN1Kq8ALbb3SWix?=
+ =?iso-8859-1?Q?6+s82Ba/DJg4dND5t7uq9EyBWNhBq44z9GyhlhQKlJ+bjNbxQMI/XOTOHg?=
+ =?iso-8859-1?Q?MjdMk+z9o9mvpsgXz5q4v9yLg2uJdF6A=3D=3D?=
+Content-Type: multipart/alternative;
+	boundary="_000_BL0PR03MB4036F4446301620393CAE87682829BL0PR03MB4036namp_"
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: CO1PR03MB5729
+X-IncomingHeaderCount: 39
+Return-Path: lic.mariasalcedo@hotmail.com
+X-MS-Exchange-Organization-ExpirationStartTime: 08 Jul 2022 05:34:24.8179
+ (UTC)
+X-MS-Exchange-Organization-ExpirationStartTimeReason: OriginalSubmit
+X-MS-Exchange-Organization-ExpirationInterval: 1:00:00:00.0000000
+X-MS-Exchange-Organization-ExpirationIntervalReason: OriginalSubmit
+X-MS-Exchange-Organization-Network-Message-Id:
+ df736e10-e224-4cb1-8025-08da60a384ac
+X-EOPAttributedMessage: 0
+X-EOPTenantAttributedMessage: 84df9e7f-e9f6-40af-b435-aaaaaaaaaaaa:0
+X-MS-Exchange-Organization-MessageDirectionality: Incoming
+X-MS-Exchange-Transport-CrossTenantHeadersStripped:
+ DB3EUR04FT028.eop-eur04.prod.protection.outlook.com
+X-MS-Exchange-Transport-CrossTenantHeadersPromoted:
+ DB3EUR04FT028.eop-eur04.prod.protection.outlook.com
+X-MS-PublicTrafficType: Email
+X-MS-Exchange-Organization-AuthSource:
+ DB3EUR04FT028.eop-eur04.prod.protection.outlook.com
+X-MS-Exchange-Organization-AuthAs: Anonymous
+X-MS-UserLastLogonTime: 7/8/2022 5:07:50 AM
+X-MS-Office365-Filtering-Correlation-Id-Prvs:
+ 66027734-d578-45a5-0512-08da60a3839f
+X-MS-Exchange-EOPDirect: true
+X-Sender-IP: 40.92.41.13
+X-SID-PRA: LIC.MARIASALCEDO@HOTMAIL.COM
+X-SID-Result: PASS
+X-MS-Exchange-Organization-PCL: 2
+X-MS-Exchange-Organization-SCL: 1
+X-Microsoft-Antispam: BCL:0;
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 08 Jul 2022 05:34:24.6617
+ (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: df736e10-e224-4cb1-8025-08da60a384ac
+X-MS-Exchange-CrossTenant-Id: 84df9e7f-e9f6-40af-b435-aaaaaaaaaaaa
+X-MS-Exchange-CrossTenant-RMS-PersistedConsumerOrg: 00000000-0000-0000-0000-000000000000
+X-MS-Exchange-CrossTenant-rms-persistedconsumerorg: 00000000-0000-0000-0000-000000000000
+X-MS-Exchange-CrossTenant-AuthSource:
+ DB3EUR04FT028.eop-eur04.prod.protection.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: Internet
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SA1PR02MB8463
+X-MS-Exchange-Transport-EndToEndLatency: 00:00:05.3920363
+X-MS-Exchange-Processed-By-BccFoldering: 15.20.5417.016
+X-Microsoft-Antispam-Mailbox-Delivery:
+	abwl:0;wl:0;pcwl:0;kl:0;iwl:0;ijl:0;dwl:0;dkl:0;rwl:0;ucf:0;jmr:0;ex:0;auth:1;dest:I;ENG:(5062000285)(90000117)(90005022)(91005020)(91035115)(5061607266)(5061608174)(9050020)(9100338)(2008001134)(2008120399)(4810004)(4910013)(9575002)(10195002)(9320005);
+X-Message-Info:
+	5vMbyqxGkdeS6V+7VMJs1ehGqmn/Ic/QRzPKC18tR4GfKiaCWDgHonOBF6prhlPfYT/LbGsHzxVJBlBm9JJLNzLT2U1Nt0TgczF7C5SZ5XQyKS8jnz0lf74YyiU+M2iwzvdn51RodrFtR7ez/t3itXx4gxRAaCNy0S2zrucb6iFsmzO9zNKCazx3uBKuTZDsrBpYQUzs4/SGDfZNbfqEUQ==
+X-Message-Delivery: Vj0xLjE7dXM9MDtsPTA7YT0xO0Q9MTtHRD0xO1NDTD0z
+X-Microsoft-Antispam-Message-Info:
+	=?iso-8859-1?Q?/eMLQpnJFE5r91prH1Bf4HwJrvmvGD8JeGWLT4cbtKCwvexCHIppMsdC0O?=
+ =?iso-8859-1?Q?72j/O5AsDbPc78x8S5u3zfk9BSG0cwAb+zgPXy0MbmL4Ew3R22XiTrNSbc?=
+ =?iso-8859-1?Q?mtBH9mez1IAx25+qmdcXXscmUBNwE/0WZfbR/dI3hIPFmIPOn7XRsjslF6?=
+ =?iso-8859-1?Q?c8gejy6XutYqzm4brqNyfuvEk6IIln0FuCMj9WaDj8QDTcUSpma2a0+R1b?=
+ =?iso-8859-1?Q?HIZsAZBLiUA42WLDs72KRPhANhGQO9Rp/fHFgV8RE7bSztbKQE5Uvh+xjS?=
+ =?iso-8859-1?Q?nJo7eN0Okpx5sRBSu3wjCnfffhruJCWVt6DgBhrIpwCyuRQgL4BJSjAZP4?=
+ =?iso-8859-1?Q?iSd1SE16rrVWKYqZNSkUsV+rg7LlsVEoFKIg8ghiJSyqYwHajq9ShI9F37?=
+ =?iso-8859-1?Q?oErExLC+cr2eujgxAZzDoqCe3eD6Hnoxi4JfMe9whUDUubMy8lKCFixpCe?=
+ =?iso-8859-1?Q?U+kr4B0UNj2Plzz0Dvgd50vxrt8nv2Ysh+mx5BQxU14GVFvgn0uZrgYB5B?=
+ =?iso-8859-1?Q?suZ4d/r24wOjZOOZwpvH5WQQYi+By1J56jKY0fhEvLDdUX/9cw2W9YwXjq?=
+ =?iso-8859-1?Q?Q8YdBMdM+IKaMPpJNNXWtl27FF56MSx2RjpLUBehFkwPdeDBPySlieZZQy?=
+ =?iso-8859-1?Q?Fu2XYBFDiUyC124fi0b1+09lghT90/hhpnBkhZLrzh2bp86Z4ErWT/HmQX?=
+ =?iso-8859-1?Q?/JYjAcmVB1Ce2MaSwXLEgVHl5F05kmdVLWnRDNSIvcOgzUDy7TpEi+gzV6?=
+ =?iso-8859-1?Q?Juh7lcdqh4YSGftJyWZ9xdj8Ch6ZuRncPJ2w8mdYPwL3Y/lVgxr0z/AVuc?=
+ =?iso-8859-1?Q?5WDJXqeGlMHvWBIASji+vaKM6NaxFLEI7GGMf9EmoypgaSm7VnVj/h6NrA?=
+ =?iso-8859-1?Q?fiwjl/MhVwLsVxicIH57ukGrhT4IYovctA4FRyCKfeYarIS0z55nu6BVuV?=
+ =?iso-8859-1?Q?v4QoM7G2qu+Z/R+FpqOyrrsq4WZV32ItMixP4cSvhCggqbPrTZfH93Zkls?=
+ =?iso-8859-1?Q?ib9LQOy4zoBWy0fXJwaFWA0Bfa37X9tMk1RtSP8V8ETGFJliooW7qXvWU2?=
+ =?iso-8859-1?Q?e4g+j9BlfHYoLM4bNvNF1mrSGL7VnfRp6lB2TrJD4O/90JSuoHWmoyaJ9t?=
+ =?iso-8859-1?Q?zP+L37DDeeceDI9elASTpu2HS7vWeHNBGVwuRLhJzYM6F/AwV+0bgecCuU?=
+ =?iso-8859-1?Q?yjS9cxi3J/z40GPAXsvok2jdQehnhVeVo4eoHFTJYyb+PN06r4SmHz7z7R?=
+ =?iso-8859-1?Q?4/Ux8cwSaNcH1LPURGHxrxiu4pq3ERioRSD6Ui9lpqUsHV76ja6W1TQDOP?=
+ =?iso-8859-1?Q?wnkuORDPOza1kVF/fnM/cIs9ycQ7u4NgMvRQCViNBxFMbEPlmDkpDQz5ah?=
+ =?iso-8859-1?Q?JNmUFcQ7jF8n5QqcqXzfAq+xknUk9nsa8FevIqkSkHk9I5bGnA3MX6YT4e?=
+ =?iso-8859-1?Q?cTofk/yaoFLo69YL/BAWr310aSlDsT6TrOeE1cTCpmK4pdpoqKOZZzgil9?=
+ =?iso-8859-1?Q?rbjhhYUKKigqzMgaYGrxyurlroPVWnomg2uM+DTWj5bXKtXwj5NQ5iIh9b?=
+ =?iso-8859-1?Q?AVKgRuhEhIBxEST4Qu+oNeH6wQv9R7odefY9TMX7SkBMwpn+Tdueninfsz?=
+ =?iso-8859-1?Q?MF461UVGxUBWO6wfpz0xOMUQnRrzxdT8+CUzWbyPhG5fByf92cpVBBzvYB?=
+ =?iso-8859-1?Q?VGRTAPMjZ+brgiJ+TZU=3D?=
+MIME-Version: 1.0
+
+--_000_BL0PR03MB4036F4446301620393CAE87682829BL0PR03MB4036namp_
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+
+<https://1drv.ms/u/s!AgTTDumsrM4OfHhphX-7tC8A2ok>
+[https://xw2zsq.dm.files.1drv.com/y4mYkzABrGh-jKcp7nboo31aTWO9kep-ahKfKXrXO=
+Pn3KI1RJhv_yN-o5Q48ZD0HrhYVjynJFktT71jvVn5DaVAiQMOMkSO0lktynt5fP0lH-9c9Zxwi=
+AFdHTXP7H4nvm8czNEAWfDLlZgEfOoHZbh271x_DuSO5CsnU0-H2qQBxpRVHph7xsXR6UwymZL5=
+Ke4ELKLnVZxGd_mrP6AuJNtstg?width=3D200&height=3D150&cropmode=3Dcenter]
+[https://res.cdn.office.net/assets/mail/file-icon/png/cloud_blue_16x16.png]=
+pag_web_Mesa de trabajo 1.jpg
+<https://1drv.ms/u/s!AgTTDumsrM4OfbXOK1Jc5PA2vbQ>
+[https://yoja7a.dm.files.1drv.com/y4mUjfz0EkE-b9ArwgxvTPGAHN4txGodUGCVwRaxj=
+HvoHN3XXtj3IF-j9kvxgJKHyEL0gHBDbMF8xjtNcW-z4MWncJYVUeplfB8K0mnR3PNPyEdqQBPv=
+Ba9cZh5_g2GJYZmEon8iZa2gSg9PdIM0MV7k-fhd65Rxvtn0RktIeqedr37vh5FD_2r23f2Zlqv=
+SSGdJzIAuGAKz1g3g7BSvWKWLg?width=3D200&height=3D150&cropmode=3Dcenter]
+[https://res-2.cdn.office.net/assets/mail/file-icon/png/cloud_blue_16x16.pn=
+g]pag_web-02.jpg
+<https://1drv.ms/u/s!AgTTDumsrM4OfocyHqBBDsDvOhE>
+[https://j4rkba.dm.files.1drv.com/y4m1TQoXVEOeuPRfIM8450VFq40hwGVFP0q8evEvS=
+WlQBMmt5Mw8cBMuE_CUtHna0MfGfE8nXdLJMUDPfClBbN4k6ofRqsmiq0Vb66glvpLxMsnJsW90=
+wGd1ndVTFsec7uzpOrMjUVrCIs5Kj2W7Bu0WUfnAMtjkr8MKBcp5GBCNg4s5SiE0tOUAOTpOjQ_=
+NT4BpKrMhwTkyPEUOqGzSxtoxA?width=3D200&height=3D150&cropmode=3Dcenter]
+[https://res.cdn.office.net/assets/mail/file-icon/png/cloud_blue_16x16.png]=
+pag_web-03.jpg
+<https://1drv.ms/u/s!AgTTDumsrM4Ofzk4Ma2xfDFROp8>
+[https://kvnxpg.dm.files.1drv.com/y4mSOtBOmqV1TwPrCoPMoG7C_pQlSYz52OxkjZT34=
+dpYp4mhR-LDN9o9pNaSoUDvhpy2rFnjCUprS6jEw7G2LEsR19jdllE0_8PgWbfyUXcOowlbZEoD=
+t4oFLsbq_ZU9z-APYE5gBa_zF_MgBo-UgEBLcJQIPZ4CJ7Nc2NvZp3S7l5c-5Jo02yZB5LIvCKi=
+iYpuc_qgHcLPYH_KpcicyCuSzg?width=3D200&height=3D150&cropmode=3Dcenter]
+[https://res-2.cdn.office.net/assets/mail/file-icon/png/cloud_blue_16x16.pn=
+g]pag_web-04.jpg
+
+
+--_000_BL0PR03MB4036F4446301620393CAE87682829BL0PR03MB4036namp_
+Content-Type: text/html; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+
+<html><head>
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Diso-8859-=
+1">
+<style type=3D"text/css" style=3D"display:none;"> P {margin-top:0;margin-bo=
+ttom:0;} </style>
+</head>
+<body dir=3D"ltr">
+<div style=3D"font-family: Calibri, Arial, Helvetica, sans-serif; font-size=
+: 12pt; color: rgb(0, 0, 0);">
+<span class=3D"_Entity _EType_THUMBNAIL_VIEW_LINK _EId_THUMBNAIL_VIEW_LINK =
+_EReadonly_1" style=3D"display: inline-block;"><span><a href=3D"https://1dr=
+v.ms/u/s!AgTTDumsrM4OfHhphX-7tC8A2ok" id=3D"OLK_Beautified_Image4aaeb4e2-fc=
+c0-639e-83a4-2f124c19f30a" target=3D"_blank" class=3D"OWAAutoLink" contente=
+ditable=3D"false" style=3D"width: 158px; height: 138px; background-color: r=
+gb(244, 244, 244); border-top-left-radius: 3px; border-top-right-radius: 3p=
+x; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; display=
+: block; margin-right: 10px; position: relative; top: 5px; border: 1px soli=
+d rgb(244, 244, 244);">
+<div style=3D"width: 158px; height: 118px; border-top-left-radius: 3px; bor=
+der-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-l=
+eft-radius: 3px;">
+<img alt=3D"" role=3D"presentation" style=3D"display: block; width: 100%; h=
+eight: 100%; object-fit: cover; border-top-left-radius: 3px; border-top-rig=
+ht-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius:=
+ 3px;" src=3D"https://xw2zsq.dm.files.1drv.com/y4mYkzABrGh-jKcp7nboo31aTWO9=
+kep-ahKfKXrXOPn3KI1RJhv_yN-o5Q48ZD0HrhYVjynJFktT71jvVn5DaVAiQMOMkSO0lktynt5=
+fP0lH-9c9ZxwiAFdHTXP7H4nvm8czNEAWfDLlZgEfOoHZbh271x_DuSO5CsnU0-H2qQBxpRVHph=
+7xsXR6UwymZL5Ke4ELKLnVZxGd_mrP6AuJNtstg?width=3D200&amp;height=3D150&amp;cr=
+opmode=3Dcenter"></div>
+<div style=3D"height: 20px;"><img alt=3D"" role=3D"presentation" style=3D"p=
+adding-left: 1px;" src=3D"https://res.cdn.office.net/assets/mail/file-icon/=
+png/cloud_blue_16x16.png"><span spellcheck=3D"false" style=3D"padding: 0px =
+2px 0px 1px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap=
+; font-size: 14px; font-family: &quot;Segoe UI&quot;; width: 138px; max-wid=
+th: 138px; display: inline-block; text-decoration: underline;">pag_web_Mesa
+ de trabajo 1.jpg</span></div>
+</a></span></span><span class=3D"_Entity _EType_THUMBNAIL_VIEW_LINK _EId_TH=
+UMBNAIL_VIEW_LINK_1 _EReadonly_1" style=3D"display: inline-block;"><span><a=
+ href=3D"https://1drv.ms/u/s!AgTTDumsrM4OfbXOK1Jc5PA2vbQ" id=3D"OLK_Beautif=
+ied_Image5b3f3c9f-5bf8-cac3-a035-450e465e0088" target=3D"_blank" class=3D"O=
+WAAutoLink" contenteditable=3D"false" style=3D"width: 158px; height: 138px;=
+ background-color: rgb(244, 244, 244); border-top-left-radius: 3px; border-=
+top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-=
+radius: 3px; display: block; margin-right: 10px; position: relative; top: 5=
+px; border: 1px solid rgb(244, 244, 244);">
+<div style=3D"width: 158px; height: 118px; border-top-left-radius: 3px; bor=
+der-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-l=
+eft-radius: 3px;">
+<img alt=3D"" role=3D"presentation" style=3D"display: block; width: 100%; h=
+eight: 100%; object-fit: cover; border-top-left-radius: 3px; border-top-rig=
+ht-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius:=
+ 3px;" src=3D"https://yoja7a.dm.files.1drv.com/y4mUjfz0EkE-b9ArwgxvTPGAHN4t=
+xGodUGCVwRaxjHvoHN3XXtj3IF-j9kvxgJKHyEL0gHBDbMF8xjtNcW-z4MWncJYVUeplfB8K0mn=
+R3PNPyEdqQBPvBa9cZh5_g2GJYZmEon8iZa2gSg9PdIM0MV7k-fhd65Rxvtn0RktIeqedr37vh5=
+FD_2r23f2ZlqvSSGdJzIAuGAKz1g3g7BSvWKWLg?width=3D200&amp;height=3D150&amp;cr=
+opmode=3Dcenter"></div>
+<div style=3D"height: 20px;"><img alt=3D"" role=3D"presentation" style=3D"p=
+adding-left: 1px;" src=3D"https://res-2.cdn.office.net/assets/mail/file-ico=
+n/png/cloud_blue_16x16.png"><span spellcheck=3D"false" style=3D"padding: 0p=
+x 2px 0px 1px; overflow: hidden; text-overflow: ellipsis; white-space: nowr=
+ap; font-size: 14px; font-family: &quot;Segoe UI&quot;; width: 138px; max-w=
+idth: 138px; display: inline-block; text-decoration: underline;">pag_web-02=
+.jpg</span></div>
+</a></span></span><span class=3D"_Entity _EType_THUMBNAIL_VIEW_LINK _EId_TH=
+UMBNAIL_VIEW_LINK_2 _EReadonly_1" style=3D"display: inline-block;"><span><a=
+ href=3D"https://1drv.ms/u/s!AgTTDumsrM4OfocyHqBBDsDvOhE" id=3D"OLK_Beautif=
+ied_Image1abb211a-9024-0fa1-4e81-fe8014358755" target=3D"_blank" class=3D"O=
+WAAutoLink" contenteditable=3D"false" style=3D"width: 158px; height: 138px;=
+ background-color: rgb(244, 244, 244); border-top-left-radius: 3px; border-=
+top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-=
+radius: 3px; display: block; margin-right: 10px; position: relative; top: 5=
+px; border: 1px solid rgb(244, 244, 244);">
+<div style=3D"width: 158px; height: 118px; border-top-left-radius: 3px; bor=
+der-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-l=
+eft-radius: 3px;">
+<img alt=3D"" role=3D"presentation" style=3D"display: block; width: 100%; h=
+eight: 100%; object-fit: cover; border-top-left-radius: 3px; border-top-rig=
+ht-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius:=
+ 3px;" src=3D"https://j4rkba.dm.files.1drv.com/y4m1TQoXVEOeuPRfIM8450VFq40h=
+wGVFP0q8evEvSWlQBMmt5Mw8cBMuE_CUtHna0MfGfE8nXdLJMUDPfClBbN4k6ofRqsmiq0Vb66g=
+lvpLxMsnJsW90wGd1ndVTFsec7uzpOrMjUVrCIs5Kj2W7Bu0WUfnAMtjkr8MKBcp5GBCNg4s5Si=
+E0tOUAOTpOjQ_NT4BpKrMhwTkyPEUOqGzSxtoxA?width=3D200&amp;height=3D150&amp;cr=
+opmode=3Dcenter"></div>
+<div style=3D"height: 20px;"><img alt=3D"" role=3D"presentation" style=3D"p=
+adding-left: 1px;" src=3D"https://res.cdn.office.net/assets/mail/file-icon/=
+png/cloud_blue_16x16.png"><span spellcheck=3D"false" style=3D"padding: 0px =
+2px 0px 1px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap=
+; font-size: 14px; font-family: &quot;Segoe UI&quot;; width: 138px; max-wid=
+th: 138px; display: inline-block; text-decoration: underline;">pag_web-03.j=
+pg</span></div>
+</a></span></span><span class=3D"_Entity _EType_THUMBNAIL_VIEW_LINK _EId_TH=
+UMBNAIL_VIEW_LINK_3 _EReadonly_1" style=3D"display: inline-block;"><span><a=
+ href=3D"https://1drv.ms/u/s!AgTTDumsrM4Ofzk4Ma2xfDFROp8" id=3D"OLK_Beautif=
+ied_Imagee672f278-3a4e-d86f-6634-fe253380fcc1" target=3D"_blank" class=3D"O=
+WAAutoLink" contenteditable=3D"false" style=3D"width: 158px; height: 138px;=
+ background-color: rgb(244, 244, 244); border-top-left-radius: 3px; border-=
+top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-=
+radius: 3px; display: block; margin-right: 10px; position: relative; top: 5=
+px; border: 1px solid rgb(244, 244, 244);">
+<div style=3D"width: 158px; height: 118px; border-top-left-radius: 3px; bor=
+der-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-l=
+eft-radius: 3px;">
+<img alt=3D"" role=3D"presentation" style=3D"display: block; width: 100%; h=
+eight: 100%; object-fit: cover; border-top-left-radius: 3px; border-top-rig=
+ht-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius:=
+ 3px;" src=3D"https://kvnxpg.dm.files.1drv.com/y4mSOtBOmqV1TwPrCoPMoG7C_pQl=
+SYz52OxkjZT34dpYp4mhR-LDN9o9pNaSoUDvhpy2rFnjCUprS6jEw7G2LEsR19jdllE0_8PgWbf=
+yUXcOowlbZEoDt4oFLsbq_ZU9z-APYE5gBa_zF_MgBo-UgEBLcJQIPZ4CJ7Nc2NvZp3S7l5c-5J=
+o02yZB5LIvCKiiYpuc_qgHcLPYH_KpcicyCuSzg?width=3D200&amp;height=3D150&amp;cr=
+opmode=3Dcenter"></div>
+<div style=3D"height: 20px;"><img alt=3D"" role=3D"presentation" style=3D"p=
+adding-left: 1px;" src=3D"https://res-2.cdn.office.net/assets/mail/file-ico=
+n/png/cloud_blue_16x16.png"><span spellcheck=3D"false" style=3D"padding: 0p=
+x 2px 0px 1px; overflow: hidden; text-overflow: ellipsis; white-space: nowr=
+ap; font-size: 14px; font-family: &quot;Segoe UI&quot;; width: 138px; max-w=
+idth: 138px; display: inline-block; text-decoration: underline;">pag_web-04=
+.jpg</span></div>
+</a></span></span><br>
+</div>
+</body>
+</html>
+
+--_000_BL0PR03MB4036F4446301620393CAE87682829BL0PR03MB4036namp_--
